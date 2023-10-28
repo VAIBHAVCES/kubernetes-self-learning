@@ -92,3 +92,11 @@ Network 10.47.0.0/16 overlaps with existing route 10.47.0.0/16 on host
 ```
 
 3. Or in the same directory I have provided the weave set file which worked for me prefer using it.
+
+
+#### All Node Are Ready but Pods not getting created
+1. Afterr doing everything I saw all my nodes were in ready state
+2. Hence right after it I created one nginx pod
+3. But there only when I listed I saw kube-proxy and weave-net pods are crashing and also my pod was failing on one of the worker nodes
+4. I don't know what the hell happened !!! But after rebooting all the nodes I started to see all of them creating successfully.
+5. Thanks to : https://stackoverflow.com/questions/50744371/pod-creation-stuck-in-containercreating-state
