@@ -53,6 +53,16 @@ Note: It is also possible you might not be able to run even the `kubectl get pod
 
 Note : The exact problem here was : https://github.com/kubernetes/kubernetes/issues/110177#issuecomment-1161647736
 
+
+* Note - Above command needs to be ran on containerd using worked nodes. In my case I ran it on master node due to which master nodes components were running healthy. But the worker kube system pod kube-proxy was failing non stop with no error in logs it was just showing this in describe
+```sh
+  Nameserver limits were exceeded, some nameservers have been omitted, the applied nameserver line is: 67.207.67.2 67.207.67.3 67.207.67.2
+```
+But the solution again was same running 
+```sh
+sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+```
+and after that restarting kubelet and containerd
 #### Core DNS not starting up 
 
 1. Note core dns don't starts up until you have applied the weaveset configuration so take a chill pill.
@@ -100,3 +110,4 @@ Network 10.47.0.0/16 overlaps with existing route 10.47.0.0/16 on host
 3. But there only when I listed I saw kube-proxy and weave-net pods are crashing and also my pod was failing on one of the worker nodes
 4. I don't know what the hell happened !!! But after rebooting all the nodes I started to see all of them creating successfully.
 5. Thanks to : https://stackoverflow.com/questions/50744371/pod-creation-stuck-in-containercreating-state
+˚
