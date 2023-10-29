@@ -19,3 +19,9 @@ Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml --node-ip
 > And when I created my first pod it was assigned an IP of `172.30.128.1`,
 
 > how that IP is defined that is an internal topic but the point to note is that this is the IP range for the new pods which will be created
+> Ref : https://www.weave.works/docs/net/latest/tasks/ipam/configuring-weave/
+
+##### For weave cleanup reset prefer doing 
+> ```sh
+> rm /opt/cni/bin/weave-*
+>```
