@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vormir
+spec:
+  containers:
+    - name: vormir
+      image: nginx
+    - name: thanos
+      image: redis
+    - name: rwanda
+      image : memcached
